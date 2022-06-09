@@ -96,6 +96,11 @@ public class UtilsMigrante {
         return cursor;
     }
 
+    public static Cursor consultarMigrante(SQLiteDatabase db, String nombre){
+        Cursor cursor = db.rawQuery("SELECT * FROM "+T_MIGRANTE+" WHERE "+C_NOMBRE+" LIKE '%"+nombre+"%'",null);
+        return cursor;
+    }
+
     public static void insertarMigrante(SQLiteDatabase db, Migrante migrante){
         String insert="INSERT INTO "+T_MIGRANTE+" ("+
                 C_NOMBRE+", "+
