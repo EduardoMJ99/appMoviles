@@ -31,7 +31,18 @@ public class Migrante {
         this.fechaRegistro = Date.valueOf(cursor.getString(9));
     }
 
-    public Migrante() {}
+    public Migrante(int i) {
+        this.id = 0;
+        this.nombre = "Eduardo";
+        this.telefono = "6640000000";
+        this.fechaNac = Date.valueOf("1999-03-05");
+        this.idNacion = "MEX";
+        this.fechaLlegada = Date.valueOf("1999-03-05");
+        this.horaLlegada = Time.valueOf("04:04:04");
+        this.fechaConsulado = Date.valueOf("1999-03-05");
+        this.horaConsulado = Time.valueOf("04:04:04");
+        this.fechaRegistro = Date.valueOf("1999-03-05");
+    }
 
     public Integer getId() {
         return id;

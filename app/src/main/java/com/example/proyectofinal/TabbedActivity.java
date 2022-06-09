@@ -12,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.proyectofinal.ui.main.SectionsPagerAdapter;
 import com.example.proyectofinal.databinding.ActivityTabbedBinding;
+
+import org.w3c.dom.Text;
 
 public class TabbedActivity extends AppCompatActivity {
 
@@ -33,19 +36,15 @@ public class TabbedActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
         ponerIconos();
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        TextView txtTitulo = findViewById(R.id.txtTituloTabbed);
+        txtTitulo.setText("Bienvenido, Eduardo Morgado");
     }
 
     private void ponerIconos(){
-        tabs.getTabAt(0).setIcon(R.drawable.error);
+        tabs.getTabAt(0).setIcon(R.drawable.home);
+        tabs.getTabAt(1).setIcon(R.drawable.backpack);
+        tabs.getTabAt(2).setIcon(R.drawable.booking);
+
     }
 }

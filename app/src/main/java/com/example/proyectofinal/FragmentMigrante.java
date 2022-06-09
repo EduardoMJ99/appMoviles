@@ -2,11 +2,21 @@ package com.example.proyectofinal;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.proyectofinal.entidades.Migrante;
+import com.example.proyectofinal.utilidades.MigranteAdaptador;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +24,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FragmentMigrante extends Fragment {
+
+    MigranteAdaptador adapter;
+    RecyclerView recyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,5 +73,24 @@ public class FragmentMigrante extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_migrante, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        List<Migrante> list = new ArrayList<>();
+        list = getData();
+        recyclerView = getView().findViewById(R.id.recyclerMigrante);
+        adapter = new MigranteAdaptador(list,getView().getContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
+    }
+
+    private List<Migrante> getData(){
+        List<Migrante> list = new ArrayList<>();
+        list.add(new Migrante(0));
+        list.add(new Migrante(0));
+        list.add(new Migrante(0));
+        return list;
     }
 }

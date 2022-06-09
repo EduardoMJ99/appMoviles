@@ -40,14 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:hint="Correo electronico"
-            android:textColorHint="@color/hintText"
-            android:paddingLeft="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:background="@drawable/rounded_login_edittext"
-            android:backgroundTint="@color/background3"
             android:layout_weight="5"
-            android:textSize="15dp"
+            style="@style/EditTexts"
             android:inputType="textEmailAddress" />
 
     </LinearLayout>
@@ -76,13 +70,7 @@
             android:layout_height="match_parent"
             android:hint="Contraseña"
             android:layout_weight="5"
-            android:textColorHint="@color/hintText"
-            android:paddingLeft="10dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:background="@drawable/rounded_login_edittext"
-            android:backgroundTint="@color/background3"
-            android:textSize="15dp"
+            style="@style/EditTexts"
             android:inputType="textPassword" />
     </LinearLayout>
 
