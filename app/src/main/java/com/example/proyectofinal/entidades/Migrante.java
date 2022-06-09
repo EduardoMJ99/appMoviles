@@ -2,46 +2,58 @@ package com.example.proyectofinal.entidades;
 
 import android.database.Cursor;
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Migrante {
 
     private Integer id;
     private String nombre;
     private String telefono;
-    private Date fechaNac;
+    private String fechaNac;
     private String idNacion;
-    private Date fechaLlegada;
-    private Time horaLlegada;
-    private Date fechaConsulado;
-    private Time horaConsulado;
-    private Date fechaRegistro;
+    private String fechaLlegada;
+    private String horaLlegada;
+    private String fechaConsulado;
+    private String horaConsulado;
+    private String fechaRegistro;
+    private String rutaFotografia;
 
     public Migrante(Cursor cursor) {
         this.id = Integer.parseInt(cursor.getString(0));
         this.nombre = cursor.getString(1);
         this.telefono = cursor.getString(2);
-        this.fechaNac = Date.valueOf(cursor.getString(3));
+        this.fechaNac = cursor.getString(3);
         this.idNacion = cursor.getString(4);
-        this.fechaLlegada = Date.valueOf(cursor.getString(5));
-        this.horaLlegada = Time.valueOf(cursor.getString(6));
-        this.fechaConsulado = Date.valueOf(cursor.getString(7));
-        this.horaConsulado = Time.valueOf(cursor.getString(8));
-        this.fechaRegistro = Date.valueOf(cursor.getString(9));
+        this.fechaLlegada = cursor.getString(5);
+        this.horaLlegada = cursor.getString(6);
+        this.fechaConsulado = cursor.getString(7);
+        this.horaConsulado = cursor.getString(8);
+        this.fechaRegistro = cursor.getString(9);
+        this.rutaFotografia = cursor.getString(10);
     }
 
     public Migrante(int i) {
         this.id = 0;
         this.nombre = "Eduardo";
         this.telefono = "6640000000";
-        this.fechaNac = Date.valueOf("1999-03-05");
+        this.fechaNac = "1999-03-05";
         this.idNacion = "MEX";
-        this.fechaLlegada = Date.valueOf("1999-03-05");
-        this.horaLlegada = Time.valueOf("04:04:04");
-        this.fechaConsulado = Date.valueOf("1999-03-05");
-        this.horaConsulado = Time.valueOf("04:04:04");
-        this.fechaRegistro = Date.valueOf("1999-03-05");
+        this.fechaLlegada = "1999-03-05";
+        this.horaLlegada = "04:04:04";
+        this.fechaConsulado = "1999-03-05";
+        this.horaConsulado = "04:04:04";
+        this.fechaRegistro = "1999-03-05";
+    }
+
+    public Migrante(String[] valores) {
+        this.id = 0;
+        this.nombre = valores[0];
+        this.telefono = valores[1];
+        this.fechaNac = valores[2];
+        this.idNacion = valores[3];
+        this.fechaLlegada = valores[4];
+        this.horaLlegada = valores[5];
+        this.fechaConsulado = valores[6];
+        this.horaConsulado = valores[7];
+        this.rutaFotografia = valores[8];
     }
 
     public Integer getId() {
@@ -68,11 +80,11 @@ public class Migrante {
         this.telefono = telefono;
     }
 
-    public Date getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
 
@@ -84,43 +96,51 @@ public class Migrante {
         this.idNacion = idNacion;
     }
 
-    public Date getFechaLlegada() {
+    public String getFechaLlegada() {
         return fechaLlegada;
     }
 
-    public void setFechaLlegada(Date fechaLlegada) {
+    public void setFechaLlegada(String fechaLlegada) {
         this.fechaLlegada = fechaLlegada;
     }
 
-    public Time getHoraLlegada() {
+    public String getHoraLlegada() {
         return horaLlegada;
     }
 
-    public void setHoraLlegada(Time horaLlegada) {
+    public void setHoraLlegada(String horaLlegada) {
         this.horaLlegada = horaLlegada;
     }
 
-    public Date getFechaConsulado() {
+    public String getFechaConsulado() {
         return fechaConsulado;
     }
 
-    public void setFechaConsulado(Date fechaConsulado) {
+    public void setFechaConsulado(String fechaConsulado) {
         this.fechaConsulado = fechaConsulado;
     }
 
-    public Time getHoraConsulado() {
+    public String getHoraConsulado() {
         return horaConsulado;
     }
 
-    public void setHoraConsulado(Time horaConsulado) {
+    public void setHoraConsulado(String horaConsulado) {
         this.horaConsulado = horaConsulado;
     }
 
-    public Date getFechaRegistro() {
+    public String getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getRutaFotografia() {
+        return rutaFotografia;
+    }
+
+    public void setRutaFotografia(String rutaFotografia) {
+        this.rutaFotografia = rutaFotografia;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.proyectofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.proyectofinal.entidades.Migrante;
 import com.example.proyectofinal.utilidades.MigranteAdaptador;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,7 @@ public class FragmentMigrante extends Fragment {
 
     MigranteAdaptador adapter;
     RecyclerView recyclerView;
+    FloatingActionButton btnBotonMas;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,6 +85,15 @@ public class FragmentMigrante extends Fragment {
         List<Migrante> list = new ArrayList<>();
         list = getData();
         recyclerView = getView().findViewById(R.id.recyclerMigrante);
+        btnBotonMas = getView().findViewById(R.id.fabMigrante);
+        btnBotonMas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent objIntent = new Intent(getView().getContext(),AgregarMigrante.class);
+                startActivity(objIntent);
+            }
+        });
+
         adapter = new MigranteAdaptador(list,getView().getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));

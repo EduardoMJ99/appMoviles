@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinal">
         <activity
+            android:name=".AgregarMigrante"
+            android:exported="false" />
+        <activity
             android:name=".TabbedActivity"
             android:exported="false"
             android:label="@string/title_activity_tabbed"

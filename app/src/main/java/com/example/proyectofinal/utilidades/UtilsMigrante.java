@@ -1,5 +1,10 @@
 package com.example.proyectofinal.utilidades;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.proyectofinal.entidades.Migrante;
+
 public class UtilsMigrante {
 
     public static final String T_MIGRANTE="migrante";
@@ -22,13 +27,13 @@ public class UtilsMigrante {
                 C_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 C_NOMBRE+" TEXT, "+
                 C_TELEFONO+" TEXT, "+
-                C_FECHANAC+" DATE, "+
+                C_FECHANAC+" TEXT, "+
                 C_IDNACION+" TEXT,"+
-                C_FECHALLEGADA+" DATE,"+
-                C_HORALLEGADA+" TIME, "+
-                C_FECHACONSULADO+" DATE, "+
-                C_HORACONSULADO+" TIME, "+
-                C_FECHAREGISTRO+" DATE)";
+                C_FECHALLEGADA+" TEXT,"+
+                C_HORALLEGADA+" TEXT, "+
+                C_FECHACONSULADO+" TEXT, "+
+                C_HORACONSULADO+" TEXT, "+
+                C_FECHAREGISTRO+" TEXT)";
     }
 
     public static String crearTablaNacionalidad(){
@@ -77,5 +82,31 @@ public class UtilsMigrante {
                 "('URY', 'Uruguay')," +
                 "('VCT', 'San Vicente y las Granadinas')," +
                 "('VEN', 'Venezuela')";
+    }
+
+    public static Cursor consultarNaciones(SQLiteDatabase db){
+        Cursor cursor = db.rawQuery("SELECT * FROM "+T_NACIONALIDAD,null);
+        return cursor;
+    }
+
+    public static void insertarMigrante(SQLiteDatabase db, Migrante migrante){
+        String insert="INSERT INTO "+T_MIGRANTE+" ("+
+                C_NOMBRE+", "+
+                C_TELEFONO+", "+
+                C_FECHANAC+", "+
+                C_IDNACION+", "+
+                C_FECHALLEGADA+", "+
+                C_HORALLEGADA+", "+
+                C_FECHACONSULADO+", "+
+                C_HORACONSULADO+") VALUES ('"+
+                migrante.getNombre()+"', '"+
+                migrante.getTelefono()+"', '"+
+                migrante.getFechaNac()+"', '"+
+                migrante.getIdNacion()+"', '"+
+                migrante.getFechaLlegada()+"', '"+
+                migrante.getHoraLlegada()+"', '"+
+                migrante.getFechaConsulado()+"', '"+
+                migrante.getHoraConsulado()+"')";
+        db.execSQL(insert);
     }
 }

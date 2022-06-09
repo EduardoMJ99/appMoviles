@@ -49,6 +49,7 @@ public class Utilidades {
         {
             put("vacio","Favor de llenar todos los campos.");
             put("datosLoginIncorrecto","El correo y/o la contraseña son incorrectos.");
+            put("correct","Operación ejecutada correctamente.");
         }
     };
 
@@ -56,6 +57,7 @@ public class Utilidades {
         {
             put("warning",R.drawable.warning);
             put("error", R.drawable.error);
+            put("correct", R.drawable.accept);
         }
     };
 }
