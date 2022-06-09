@@ -158,5 +158,5 @@
         android:layout_marginTop="10dp"
         android:layout_height="5dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/background2"/>
+        android:background="@color/orange"/>
 </LinearLayout>

@@ -18,7 +18,7 @@
         app:strokeColor="@color/orange"
         app:strokeWidth="1dp"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-        app:srcCompat="@drawable/user"/>
+        app:srcCompat="@drawable/user_new"/>
 
     <Button
         android:id="@+id/btnTomarFoto"
