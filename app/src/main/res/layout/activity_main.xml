@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="25dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/imageView">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_card"
+            android:backgroundTint="@color/background2"
+            android:scaleType="center"
+            android:src="@drawable/user_login" />
+
+        <EditText
+            android:id="@+id/txtCorreo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Correo electronico"
+            android:textColorHint="@color/hintText"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:background="@drawable/rounded_login_edittext"
+            android:backgroundTint="@color/background3"
+            android:layout_weight="5"
+            android:textSize="15dp"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_card"
+            android:backgroundTint="@color/background2"
+            android:scaleType="center"
+            android:src="@drawable/lock_login" />
+
+        <EditText
+            android:id="@+id/txtClave"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Contraseña"
+            android:layout_weight="5"
+            android:textColorHint="@color/hintText"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:background="@drawable/rounded_login_edittext"
+            android:backgroundTint="@color/background3"
+            android:textSize="15dp"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_login_button"
+        android:fontFamily="@font/roboto"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Iniciar sesión"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:theme="@style/Button.Orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/materialDivider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/orange"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="Olvide mi contraseña"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/orange"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
