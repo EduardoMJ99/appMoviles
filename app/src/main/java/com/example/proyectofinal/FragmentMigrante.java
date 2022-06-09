@@ -1,6 +1,8 @@
 package com.example.proyectofinal;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyectofinal.entidades.Migrante;
+import com.example.proyectofinal.utilidades.ConexionSQLiteHelper;
 import com.example.proyectofinal.utilidades.MigranteAdaptador;
+import com.example.proyectofinal.utilidades.UtilsMigrante;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -31,6 +35,8 @@ public class FragmentMigrante extends Fragment {
     MigranteAdaptador adapter;
     RecyclerView recyclerView;
     FloatingActionButton btnBotonMas;
+    ConexionSQLiteHelper conn;
+    List<Migrante> listaMigrantes;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +88,10 @@ public class FragmentMigrante extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        conn = new ConexionSQLiteHelper(getView().getContext(),
+                "derechoscopio",
+                null,
+                1);
         List<Migrante> list = new ArrayList<>();
         list = getData();
         recyclerView = getView().findViewById(R.id.recyclerMigrante);
@@ -100,10 +110,23 @@ public class FragmentMigrante extends Fragment {
     }
 
     private List<Migrante> getData(){
+        SQLiteDatabase db = conn.getReadableDatabase();
+        listaMigrantes = new ArrayList<Migrante>();
+        Cursor cursor = UtilsMigrante.consultarMigrantes(db);
+        while (cursor.moveToNext()){
+            listaMigrantes.add(new Migrante(cursor));
+        }
+        return listaMigrantes;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         List<Migrante> list = new ArrayList<>();
-        list.add(new Migrante(0));
-        list.add(new Migrante(0));
-        list.add(new Migrante(0));
-        return list;
+        list = getData();
+        recyclerView = getView().findViewById(R.id.recyclerMigrante);
+        adapter = new MigranteAdaptador(list,getView().getContext());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getView().getContext()));
     }
 }

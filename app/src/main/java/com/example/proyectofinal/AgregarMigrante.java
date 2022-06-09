@@ -52,6 +52,7 @@ public class AgregarMigrante extends AppCompatActivity {
     ConexionSQLiteHelper conn;
     final int CAPTURA_IMAGEN = 1;
     String rutaFotografia;
+    Boolean fotografiaTomada = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,17 +207,25 @@ public class AgregarMigrante extends AppCompatActivity {
     private String crearNombreArchivo() {
         String fecha = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         rutaFotografia = fecha+".jpg";
+        fotografiaTomada = true;
         return rutaFotografia;
     }
 
     public void guardarMigrante(){
         if(Utilidades.estanLlenados(new EditText[]{txtNombre, txtTelefono,txtFechaNac,txtFechaLlegada,txtFechaConsul,txtHoraLlegada,txtHoraConsul})){
-            SQLiteDatabase db = conn.getWritableDatabase();
-            UtilsMigrante.insertarMigrante(db, new Migrante(new String[]{txtNombre.getText().toString(), txtTelefono.getText().toString(), txtFechaNac.getText().toString(), spiNaciones.getSelectedItem().toString().substring(0,2),txtFechaLlegada.getText().toString(), txtHoraLlegada.getText().toString(),txtFechaConsul.getText().toString(), txtHoraConsul.getText().toString(), rutaFotografia}));
-            Utilidades.lanzarToast(AgregarMigrante.this,
-                    Utilidades.mensajeToastHash.get("correct"),
-                    Utilidades.imagenToastHash.get("correct"));
-            onBackPressed();
+            if(fotografiaTomada) {
+                SQLiteDatabase db = conn.getWritableDatabase();
+                UtilsMigrante.insertarMigrante(db, new Migrante(new String[]{txtNombre.getText().toString(), txtTelefono.getText().toString(), txtFechaNac.getText().toString(), spiNaciones.getSelectedItem().toString().substring(0,3),txtFechaLlegada.getText().toString(), txtHoraLlegada.getText().toString(),txtFechaConsul.getText().toString(), txtHoraConsul.getText().toString(), rutaFotografia}));
+                Utilidades.lanzarToast(AgregarMigrante.this,
+                        Utilidades.mensajeToastHash.get("correct"),
+                        Utilidades.imagenToastHash.get("correct"));
+                onBackPressed();
+            }else {
+                Utilidades.lanzarToast(AgregarMigrante.this,
+                        "Favor de tomar fotografia.",
+                        Utilidades.imagenToastHash.get("warning"));
+            }
+
         } else {
             Utilidades.lanzarToast(AgregarMigrante.this,
                     Utilidades.mensajeToastHash.get("vacio"),

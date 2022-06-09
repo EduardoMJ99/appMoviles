@@ -21,6 +21,7 @@ public class UtilsMigrante {
     public static final String C_HORACONSULADO="horaconsulado";
     public static final String C_FECHAREGISTRO="fecharegistro";
     public static final String C_NOMBREPAIS="nombrepais";
+    public static final String C_RUTAFOTO="rutafoto";
 
     public static String crearTablaMigrante(){
         return "CREATE TABLE "+T_MIGRANTE+" ("+
@@ -33,7 +34,8 @@ public class UtilsMigrante {
                 C_HORALLEGADA+" TEXT, "+
                 C_FECHACONSULADO+" TEXT, "+
                 C_HORACONSULADO+" TEXT, "+
-                C_FECHAREGISTRO+" TEXT)";
+                C_FECHAREGISTRO+" TEXT, "+
+                C_RUTAFOTO+" TEXT)";
     }
 
     public static String crearTablaNacionalidad(){
@@ -89,6 +91,11 @@ public class UtilsMigrante {
         return cursor;
     }
 
+    public static Cursor consultarMigrantes(SQLiteDatabase db){
+        Cursor cursor = db.rawQuery("SELECT * FROM "+T_MIGRANTE,null);
+        return cursor;
+    }
+
     public static void insertarMigrante(SQLiteDatabase db, Migrante migrante){
         String insert="INSERT INTO "+T_MIGRANTE+" ("+
                 C_NOMBRE+", "+
@@ -98,7 +105,8 @@ public class UtilsMigrante {
                 C_FECHALLEGADA+", "+
                 C_HORALLEGADA+", "+
                 C_FECHACONSULADO+", "+
-                C_HORACONSULADO+") VALUES ('"+
+                C_HORACONSULADO+", "+
+                C_RUTAFOTO+") VALUES ('"+
                 migrante.getNombre()+"', '"+
                 migrante.getTelefono()+"', '"+
                 migrante.getFechaNac()+"', '"+
@@ -106,7 +114,8 @@ public class UtilsMigrante {
                 migrante.getFechaLlegada()+"', '"+
                 migrante.getHoraLlegada()+"', '"+
                 migrante.getFechaConsulado()+"', '"+
-                migrante.getHoraConsulado()+"')";
+                migrante.getHoraConsulado()+"', '"+
+                migrante.getRutaFotografia()+"')";
         db.execSQL(insert);
     }
 }
