@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinal">
         <activity
+            android:name=".EditarMigrante"
+            android:exported="false" />
+        <activity
             android:name=".AgregarMigrante"
             android:exported="false" />
         <activity

@@ -1,9 +1,12 @@
 package com.example.proyectofinal.utilidades;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.proyectofinal.entidades.Migrante;
+
+import java.util.zip.CheckedOutputStream;
 
 public class UtilsMigrante {
 
@@ -101,6 +104,11 @@ public class UtilsMigrante {
         return cursor;
     }
 
+    public static Cursor consultarMigrante(SQLiteDatabase db, Integer id){
+        Cursor cursor = db.rawQuery("SELECT * FROM "+T_MIGRANTE+" WHERE "+C_ID+" == "+id.toString(),null);
+        return cursor;
+    }
+
     public static void insertarMigrante(SQLiteDatabase db, Migrante migrante){
         String insert="INSERT INTO "+T_MIGRANTE+" ("+
                 C_NOMBRE+", "+
@@ -127,5 +135,20 @@ public class UtilsMigrante {
     public static void eliminarMigrante(SQLiteDatabase db, String id){
         String[] parametros = {id};
         db.delete(T_MIGRANTE, C_ID+"=?",parametros);
+    }
+
+    public static void actualizarMigrante(SQLiteDatabase db, Migrante migrante){
+        String[] parametros = {migrante.getId().toString()};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(C_NOMBRE, migrante.getNombre());
+        contentValues.put(C_TELEFONO, migrante.getTelefono());
+        contentValues.put(C_FECHANAC, migrante.getFechaNac());
+        contentValues.put(C_FECHALLEGADA, migrante.getFechaLlegada());
+        contentValues.put(C_HORALLEGADA, migrante.getHoraLlegada());
+        contentValues.put(C_FECHACONSULADO, migrante.getFechaConsulado());
+        contentValues.put(C_HORACONSULADO, migrante.getHoraConsulado());
+        contentValues.put(C_IDNACION, migrante.getIdNacion());
+        contentValues.put(C_RUTAFOTO, migrante.getRutaFotografia());
+        db.update(T_MIGRANTE,contentValues,C_ID+"=?",parametros);
     }
 }

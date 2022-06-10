@@ -1,6 +1,7 @@
 package com.example.proyectofinal.utilidades;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectofinal.AgregarMigrante;
+import com.example.proyectofinal.EditarMigrante;
+import com.example.proyectofinal.MainActivity;
 import com.example.proyectofinal.R;
+import com.example.proyectofinal.TabbedActivity;
 import com.example.proyectofinal.entidades.Migrante;
 
 import java.io.FileInputStream;
@@ -61,7 +66,9 @@ public class MigranteAdaptador extends RecyclerView.Adapter<MigranteViewHolder> 
         holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Prueba: "+holder.imgUsuario.getTag().toString(), Toast.LENGTH_SHORT).show();
+                Intent objIntent = new Intent(context, EditarMigrante.class);
+                objIntent.putExtra("id",holder.imgUsuario.getTag().toString());
+                context.startActivity(objIntent);
             }
         });
         holder.btnEliminar.setOnClickListener(new View.OnClickListener() {

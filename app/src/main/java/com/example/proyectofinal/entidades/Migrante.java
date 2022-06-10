@@ -30,17 +30,7 @@ public class Migrante {
         this.rutaFotografia = cursor.getString(10);
     }
 
-    public Migrante(int i) {
-        this.id = 0;
-        this.nombre = "Eduardo";
-        this.telefono = "6640000000";
-        this.fechaNac = "1999-03-05";
-        this.idNacion = "MEX";
-        this.fechaLlegada = "1999-03-05";
-        this.horaLlegada = "04:04:04";
-        this.fechaConsulado = "1999-03-05";
-        this.horaConsulado = "04:04:04";
-        this.fechaRegistro = "1999-03-05";
+    public Migrante() {
     }
 
     public Migrante(String[] valores) {
