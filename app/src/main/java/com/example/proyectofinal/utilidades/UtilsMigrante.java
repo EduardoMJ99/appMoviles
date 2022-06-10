@@ -123,4 +123,9 @@ public class UtilsMigrante {
                 migrante.getRutaFotografia()+"')";
         db.execSQL(insert);
     }
+
+    public static void eliminarMigrante(SQLiteDatabase db, String id){
+        String[] parametros = {id};
+        db.delete(T_MIGRANTE, C_ID+"=?",parametros);
+    }
 }

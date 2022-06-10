@@ -151,6 +151,31 @@
                 style="@style/TextViews"
                 android:text="Hora"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnEditarMigrante"
+                android:layout_width="0dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/edit_migrante"
+                android:backgroundTint="@color/blue"
+                android:layout_height="wrap_content"
+                android:text="Editar"/>
+            <Button
+                android:id="@+id/btnEliminarMigrante"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/trash_migrante"
+                android:backgroundTint="@color/red"
+                android:text="Eliminar"/>
+        </LinearLayout>
     </LinearLayout>
     <TextView
         android:id="@+id/border2"

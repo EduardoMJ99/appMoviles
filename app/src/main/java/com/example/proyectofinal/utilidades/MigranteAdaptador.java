@@ -1,13 +1,17 @@
 package com.example.proyectofinal.utilidades;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofinal.R;
@@ -21,7 +25,7 @@ public class MigranteAdaptador extends RecyclerView.Adapter<MigranteViewHolder> 
 
     List<Migrante> list = Collections.emptyList();
     Context context;
-    //ClickListiner listiner;
+    ConexionSQLiteHelper conn;
 
     public MigranteAdaptador(List<Migrante> list, Context context) {
         this.list = list;
@@ -40,6 +44,10 @@ public class MigranteAdaptador extends RecyclerView.Adapter<MigranteViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MigranteViewHolder holder, int position) {
+        conn = new ConexionSQLiteHelper(context,
+                "derechoscopio",
+                null,
+                1);
         holder.txtNombre.setText(list.get(position).getNombre());
         holder.txtTelefono.setText(list.get(position).getTelefono());
         holder.txtFechaNac.setText(list.get(position).getFechaNac());
@@ -49,6 +57,21 @@ public class MigranteAdaptador extends RecyclerView.Adapter<MigranteViewHolder> 
         holder.txtFechaConsul.setText(list.get(position).getFechaConsulado());
         holder.txtHoraConsul.setText(list.get(position).getHoraConsulado());
         holder.imgUsuario.setImageBitmap(colocarFoto(list.get(position).getRutaFotografia()));
+        holder.imgUsuario.setTag(list.get(position).getId());
+        holder.btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Prueba: "+holder.imgUsuario.getTag().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SQLiteDatabase db = conn.getWritableDatabase();
+                UtilsMigrante.eliminarMigrante(db, holder.imgUsuario.getTag().toString());
+                notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override

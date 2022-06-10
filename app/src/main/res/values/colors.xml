@@ -12,4 +12,6 @@
     <color name="background2">#252F37</color>
     <color name="background3">#4C5F6F</color>
     <color name="hintText">#B1BCC5</color>
+    <color name="red">#FF3E3E</color>
+    <color name="blue">#165AB9</color>
 </resources>

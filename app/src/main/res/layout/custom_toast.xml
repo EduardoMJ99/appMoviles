@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:background="@drawable/rounded_login_button"
-    android:backgroundTint="@color/background2"
+    android:backgroundTint="@color/background3"
     android:id="@+id/customToast">
 
     <ImageView
