@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 "derechoscopio",
                 null,
                 1);
-
-        Intent objIntent = new Intent(MainActivity.this,TabbedActivity.class);
-        startActivity(objIntent);
     }
 
     public void onClick(View view){

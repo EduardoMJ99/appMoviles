@@ -2,6 +2,7 @@ package com.example.proyectofinal;
 
 import android.os.Bundle;
 
+import com.example.proyectofinal.entidades.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -22,6 +23,7 @@ import org.w3c.dom.Text;
 public class TabbedActivity extends AppCompatActivity {
 
     private ActivityTabbedBinding binding;
+    Usuario usuario;
     private TabLayout tabs;
 
     @Override
@@ -37,8 +39,9 @@ public class TabbedActivity extends AppCompatActivity {
         tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         ponerIconos();
+        usuario = (Usuario) getIntent().getSerializableExtra("usuario");
         TextView txtTitulo = findViewById(R.id.txtTituloTabbed);
-        txtTitulo.setText("Bienvenido, Eduardo Morgado");
+        txtTitulo.setText("Bienvenido, "+usuario.getNombre()+" "+usuario.getApellidos());
     }
 
     private void ponerIconos(){
